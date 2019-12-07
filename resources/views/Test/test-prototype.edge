@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+	<title>Login</title>
+	<link rel='stylesheet' href="{{ assetsUrl('assets/bootstrap/bootstrap.4.css') }}">
+    <script type="text/javascript" src="{{ assetsUrl('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ assetsUrl('assets/bootstrap/bootstrap.min.js')}}"></script>
+    <link rel="stylesheet" href="{{ assetsUrl('assets/font/all.css')}}" >
+    <link rel="stylesheet" href="{{ assetsUrl('assets/custom/login.css')}}">
+    <style>
+        .color-changed{
+            color: red;
+        }
+        .blue{
+            color: blue;
+        }
+    </style>
+</head>
+<!--Coded with love by Mutiullah Samim-->
+<body>
+	<div class="container h-100">
+		<div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-3">
+                <table class="table stripped" id="test-table">
+                    <thead>
+                        <tr>
+                                <th>Sr no</th>
+                                <th>name</th>
+                                <th>address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-3">
+                <table class="table stripped" id="test-table1">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>name</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-3">
+                <table class="table stripped" id="test-table2">
+                    <thead>
+                        <tr>
+                            <th>SR no</th>
+                            <th>Fruit name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-3">
+                <table class="table stripped" id="test-table3">
+                    <thead>
+                        <tr>
+                            <th>Sr no</th>
+                            <th>Day Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="not-blue" id="not-blue">mantu</div>
+        </div>
+	</div>
+</body>
+<script src="{{ assetsUrl('assets/js/app.js')}}"></script>
+<script>
+    $(document).ready(function(e){
+       
+        $.app.getAllData().done(function(response){
+            response.forEach(function(l, i){
+                var Td = new TableData(l);
+                Td.renderDataTable()
+            })
+        })
+
+        $.app.getAllUsers().done(function(response){
+            response.forEach(function(l, i){
+                // var {desc, name, desc, srno} = l
+                var Td = new TableData(l);
+                Td.renderUsersTable()
+            })
+        })
+
+        $.app.getAllFruits().done(function(response){
+            response.forEach(function(l, i){
+                var Td = new TableData(l);
+                Td.renderFruitsTable()
+            })
+        })
+
+        $.app.getAllDays().done(function(response){
+            response.forEach(function(l, i){
+                var Td = new TableData(l);
+                Td.renderDaysTable()
+            })
+        })
+        
+        
+        
+    })
+</script>
+</html>
